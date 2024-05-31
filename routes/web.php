@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BasicController;
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,7 @@ Route::get("/demo/{name?}/{district?}", function ($name = null, $district = null
     $data = compact("name", "district", "htmlDecode");
     return view('pages.demo')->with($data);
 });
+
+Route::get("/form-create", [FormController::class, 'index']);
+Route::post("/form-create", [FormController::class, 'create']);
 
