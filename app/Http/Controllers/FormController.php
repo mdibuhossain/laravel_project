@@ -26,12 +26,19 @@ class FormController extends Controller
         return redirect()->route('form.data');
     }
 
+    public function distroy($id)
+    {
+        $people = People::find($id);
+        if (!is_null($people)) {
+            $people->delete();
+        }
+        return redirect()->route('form.data');
+    }
+
     public function view()
     {
         $peoples = People::all();
         $data = compact('peoples');
-        // echo '<pre>';
-        // print_r($data['peoples']);
         return view('pages.peoples')->with($data);
     }
 }

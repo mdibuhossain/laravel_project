@@ -14,15 +14,21 @@
                     <th>Email</th>
                     <th>Password</th>
                     <th>City</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($peoples as $people)
                     <tr>
-                        <td>{{$people->username}}</td>
-                        <td>{{$people->email}}</td>
-                        <td>{{$people->password}}</td>
-                        <td>{{$people->city}}</td>
+                        <td>{{ $people->username }}</td>
+                        <td>{{ $people->email }}</td>
+                        <td>{{ $people->password }}</td>
+                        <td>{{ $people->city }}</td>
+                        <td>
+                            <a href="{{ route('form.delete', ['id' => $people->id]) }}">
+                                <button class="btn btn-error">Delete</button>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
