@@ -6,13 +6,12 @@
 
 @section('content')
     <section class="w-5/12 mx-auto">
-
-
-        <form action="{{ url('/') }}/form-create" method="POST">
+        <form action="{{ url('/') }}/form-create" method="POST" class="space-y-2">
             @csrf
             <h3 class="text-2xl text-center mb-2">Fill the form</h3>
             <x-input type="email" name="email" placeholder="Enter email address" />
             <x-input type="text" name="username" placeholder="Enter username" />
+            <x-input type="text" name="city" placeholder="Enter City" />
             <x-input type="password" name="password" placeholder="Enter password" />
             <button type="submit" class="btn btn-info">Submit</button>
         </form>

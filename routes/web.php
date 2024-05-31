@@ -26,4 +26,5 @@ Route::get("/demo/{name?}/{district?}", function ($name = null, $district = null
 
 Route::get("/form-create", [FormController::class, 'index']);
 Route::post("/form-create", [FormController::class, 'create']);
+Route::get('/form-data', [FormController::class, 'view'])->name('form.data');
 
