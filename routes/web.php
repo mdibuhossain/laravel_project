@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get("/basic-controller", [BasicController::class, 'index']);
+
+Route::get("/demo/{name?}/{district?}", function ($name = null, $district = null) {
+    $htmlDecode = "<h1>Campus Library<h1>";
+    $data = compact("name", "district", "htmlDecode");
+    return view('pages.demo')->with($data);
 });
+
