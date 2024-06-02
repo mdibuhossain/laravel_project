@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,20 @@ Route::get("/demo/{name?}/{district?}", function ($name = null, $district = null
     return view('pages.demo')->with($data);
 });
 
-Route::get("/form-create", [FormController::class, 'index']);
-Route::post("/form-create", [FormController::class, 'create']);
-Route::get('/form-data', [FormController::class, 'view'])->name('form.data');
+Route::get("/form-create", [FormController::class, 'index'])->name('form.create.view');
+Route::post("/form-create", [FormController::class, 'create'])->name('form.create');
+;
+Route::get('/form-data', [FormController::class, 'view'])->name('form.data.view');
 Route::get('/form/delete/{id}', [FormController::class, 'distroy'])->name('form.delete');
+
+
+Route::get('/student-form-create', [StudentController::class, 'index'])->name('student.form.view');
+
+
+Route::get('/api/token', [StudentController::class, 'getToken']);
+Route::get('/api/students', [StudentController::class, 'getStudents']);
+Route::get('/api/students/{id}', [StudentController::class, 'getStudentById']);
+Route::post('/api/students', [StudentController::class, 'postStudent']);
+Route::delete('/api/students/{id}', [StudentController::class, 'deleteStudent']);
+Route::put('/api/students/{id}', [StudentController::class, 'updateStudent']);
 

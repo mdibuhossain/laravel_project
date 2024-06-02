@@ -23,7 +23,7 @@ class FormController extends Controller
         $people->password = md5($data['password']);
 
         $people->save();
-        return redirect()->route('form.data');
+        return redirect()->route('form.data.view');
     }
 
     public function distroy($id)
@@ -32,7 +32,7 @@ class FormController extends Controller
         if (!is_null($people)) {
             $people->delete();
         }
-        return redirect()->route('form.data');
+        return redirect()->route('form.data.view');
     }
 
     public function view()
