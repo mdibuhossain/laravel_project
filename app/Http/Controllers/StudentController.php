@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -54,6 +55,38 @@ class StudentController extends Controller
         $student = Student::find($id);
         $student->delete();
         return response()->json($student);
+    }
+
+
+
+
+    public function loginView()
+    {
+        return view('pages.login');
+    }
+
+    public function registerView()
+    {
+        return view('pages.register');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        $email = $request->email;
+        $password = $request->password;
+
+        $findUser = User::where('email', $email)->where('password', $password)->first();
+        if ($findUser) {
+            return response()->json($findUser);
+        } else {
+            return response()->json(['message' => 'User not found']);
+        }
     }
 
 }

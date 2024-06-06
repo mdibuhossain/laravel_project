@@ -12,9 +12,10 @@
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-            <li><a href="{{route('student.form.view')}}">Student Form</a></li>
-            <li><a href="{{route('form.create.view')}}">Form</a></li>
-            <li><a href="{{route('form.data.view')}}">List</a></li>
+            <li><a href="{{ route('student.form.view') }}">Student Form</a></li>
+            <li><a href="{{ route('form.create.view') }}">Form</a></li>
+            <li><a href="{{ route('form.data.view') }}">List</a></li>
+            <li><a href="{{ route('login.view') }}">Login</a></li>
         </ul>
     </div>
     <div class="navbar-end">

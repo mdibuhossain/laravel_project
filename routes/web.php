@@ -42,3 +42,10 @@ Route::post('/api/students', [StudentController::class, 'postStudent']);
 Route::delete('/api/students/{id}', [StudentController::class, 'deleteStudent']);
 Route::put('/api/students/{id}', [StudentController::class, 'updateStudent']);
 
+
+
+
+Route::get('/login-form', [StudentController::class, 'loginView'])->name('login.view');
+Route::get('/register-form', [StudentController::class, 'registerView'])->name('register.view');
+Route::post('/login', [StudentController::class, 'login'])->name('login');
+
