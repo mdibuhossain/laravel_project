@@ -73,7 +73,6 @@ class StudentController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6'
         ]);
@@ -87,6 +86,23 @@ class StudentController extends Controller
         } else {
             return response()->json(['message' => 'User not found']);
         }
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:4'
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+
+        return view('pages.login');
     }
 
 }
